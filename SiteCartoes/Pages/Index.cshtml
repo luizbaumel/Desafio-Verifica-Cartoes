@@ -1,0 +1,28 @@
+@page
+@using SiteCartoes.Pages
+@model IndexModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Card Verification</title>
+</head>
+<body>
+    <h1>Card Verification</h1>
+
+    <form method="post">
+        @Html.AntiForgeryToken()
+        <label for="cardNumber">Card Number:</label>
+        <input type="text" id="cardNumber" name="CardNumber" required />
+        <button type="submit">Verify</button>
+        
+    </form>
+
+    @if (Model.CardBrand != null)
+    {
+        <p>Card Brand: @Model.CardBrand</p>
+        <p>Valid: @(Model.IsValid ? "Yes" : "No")</p>
+    }
+</body>
+</html>
